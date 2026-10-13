@@ -10,11 +10,11 @@ class Fixed {
   Fixed(const float f);
   Fixed(const Fixed& other);
   Fixed& operator=(const Fixed& other);
-
   ~Fixed();
 
   int getRawBits(void) const;
   void setRawBits(int const raw);
+
   float toFloat(void) const;
   int toInt(void) const;
 
@@ -24,14 +24,16 @@ class Fixed {
 	bool operator<=(const Fixed& other) const;
 	bool operator==(const Fixed& other) const;
 	bool operator!=(const Fixed& other) const;
-
 	Fixed operator+(const Fixed& other) const;
 	Fixed operator-(const Fixed& other) const;
 	Fixed operator*(const Fixed& other) const;
 	Fixed operator/(const Fixed& other) const;
-
+  // prefix
 	Fixed& operator++();
+  Fixed& operator--();
+  // postfix
 	Fixed operator++(int);
+  Fixed operator--(int);
 
 	static Fixed& min(Fixed& a, Fixed& b);
 	static const Fixed& min(const Fixed& a, const Fixed& b);

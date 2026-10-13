@@ -1,6 +1,7 @@
 #include "Fixed.hpp"
 #include <iostream>
 #include <cmath>
+#include <stdexcept>
 
 Fixed::Fixed() : raw_bits_(0) {}
 
@@ -55,29 +56,59 @@ bool Fixed::operator!=(const Fixed& other) const {
 }
 
 Fixed Fixed::operator+(const Fixed& other) const {
-  return Fixed(toFloat() + other.toFloat());
+  Fixed ret;
+
+  ret.setRawBits(raw_bits_ + other.raw_bits_);
+  return ret;
 }
 
 Fixed Fixed::operator-(const Fixed& other) const {
-  return Fixed(toFloat() - other.toFloat());
+  Fixed ret;
+
+  ret.setRawBits(raw_bits_ - other.raw_bits_);
+  return ret;
 }
 
 Fixed Fixed::operator*(const Fixed& other) const {
-  return Fixed(toFloat() * other.toFloat());
+  Fixed ret;
+
+  ret.setRawBits((raw_bits_ * other.raw_bits_) / 256);
+  return ret;
 }
 
 Fixed Fixed::operator/(const Fixed& other) const {
-  return Fixed(toFloat() / other.toFloat());
+  if (other.raw_bits_ == 0)
+   throw std::domain_error("Fixed: division by zero"); 
+
+  Fixed ret;
+
+  ret.setRawBits((raw_bits_ * 256) / other.raw_bits_);
+  return ret;
 }
 
+// prefix
 Fixed& Fixed::operator++() {
   raw_bits_ += 1;
   return *this;
 }
 
+// prefix
+Fixed& Fixed::operator--() {
+  raw_bits_ -= 1;
+  return *this;
+}
+
+// postfix
 Fixed Fixed::operator++(int) {
   Fixed copy(*this);
   raw_bits_ += 1;
+  return copy;
+}
+
+// postfix
+Fixed Fixed::operator--(int) {
+  Fixed copy(*this);
+  raw_bits_ -= 1;
   return copy;
 }
 

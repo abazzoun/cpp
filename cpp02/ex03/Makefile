@@ -2,10 +2,10 @@ NAME			:= ex03
 CXX				:= c++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98
 SRC				:= main.cpp Fixed.cpp Point.cpp bsp.cpp
-OBJ				:= $(SRC.c=.o)
+OBJ				:= $(SRC:.cpp=.o)
 
-%.o: %.c
-	$(CXX) $(CXXFLAGS) $< -c $@
+%.o: %.cpp Fixed.hpp Point.hpp
+	$(CXX) $(CXXFLAGS) -c $< -o  $@
 
 all: $(NAME)
 
@@ -18,7 +18,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: clean
+re: fclean
 	$(MAKE) all
 
 .PHONY: all clean fclean re
