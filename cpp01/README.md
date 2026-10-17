@@ -4,19 +4,21 @@
 
 The goal of this project is to introduce Object-Oriented Programming.
 
-## Instructions
+## Instruction
 
-Clone the repository, then build the project using:
+Navigate to the desired exercise directory, comile the program using `make`, and run the generated executable.
 
-```bash
+```sh
+cd ex00
 make
+./executable_name
 ```
 
-Once the build completes, run the executable:
+Replace `ex00` and `executable_name` with the appropriate directory and executable names.
 
-```bash
-./ex0*
-```
+## AI Usage
+
+OpenAI Codex was used exlusively for debugging and checking the code for errors. All implelementation and design decisions were made independently.
 
 ## Resources
 

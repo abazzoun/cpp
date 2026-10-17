@@ -8,7 +8,7 @@ The goal of this module is to introduce Object-Oriented Programming (OOP).
 
 ## Instruction
 
-Navigate to the exercise directory, comile the program using `make`, and run the generated executable.
+Navigate to the desired exercise directory, comile the program using `make`, and run the generated executable.
 
 ```sh
 cd ex00
