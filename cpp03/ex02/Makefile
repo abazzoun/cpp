@@ -1,9 +1,10 @@
-NAME			:= ex02 
-CXX				:= c++
-CXXFLAGS	:= -Wall -Wextra -Werror -std+=98
-SRC				:= main.cpp
-OBJ				:= $(SRC:.cpp=.o)
-HEADER		:= ClapTrap.hpp ScavTrap.hpp
+NAME			:= ex02
+CXX				:= c++ 
+CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
+SRC       := main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+OBJ       := $(SRC:.cpp=.o)
+HEADER    := ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+
 
 all: $(NAME)
 
@@ -20,6 +21,6 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean
+	$(MAKE) all
 
-	
 .PHONY: all clean fclean re

@@ -1,4 +1,5 @@
 #include "ClapTrap.hpp"
+#include <limits>
 #include <iostream>
 
 ClapTrap::ClapTrap(const std::string& name)
@@ -10,7 +11,9 @@ ClapTrap::ClapTrap(const ClapTrap& other)
     : name_(other.name_),
       health_(other.health_),
       energy_(other.energy_),
-      damage_(other.damage_) {}
+      damage_(other.damage_) {
+  std::cout << "ClapTrap " << name_ << " is constructed by copying.\n"; 
+}
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
   if (this != &other) {
@@ -18,6 +21,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
     health_ = other.health_;
     energy_ = other.energy_;
     damage_ = other.damage_;
+    std::cout << "ClapTrap " << name_ << " is assigned by copying.\n"; 
   }
   return *this;
 }
@@ -32,13 +36,13 @@ void ClapTrap::attack(const std::string& target) {
     return ;
   }
   if (energy_ <= 0) {
-    std::cout << "ClapTrap " << name_ << " does not have energy.\n";
+    std::cout << "ClapTrap " << name_ << " has no energy.\n";
     return ;
   }
   --energy_;
   std::cout
-    << "ClapTrap " << name_ << " attacks " << target
-    << " causing " << damage_ << " points of damage!\n";
+    << "ClapTrap " << name_ << " attacks " << target << ", causing " << damage_
+    << (damage_ == 1 ? " point" : " points") << " of damage!\n";
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
@@ -47,8 +51,9 @@ void ClapTrap::takeDamage(unsigned int amount) {
     return ;
   }
   health_ -= amount;
-  if (health_ < 0) health_ = 0;
-  std::cout << "ClapTrap " << name_ << " takes " << amount << " points of damage!\n";
+  std::cout
+    << "ClapTrap " << name_ << " takes " << amount
+    << (amount == 1 ? " point" : " points") << " of damage!\n";
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
@@ -57,10 +62,18 @@ void ClapTrap::beRepaired(unsigned int amount) {
     return ;
   }
   if (energy_ <= 0) {
-    std::cout << "ClapTrap " << name_ << " does not have energy.\n";
+    std::cout << "ClapTrap " << name_ << " has no energy.\n";
     return ;
   }
-  health_ += amount;
+  if (amount >
+      static_cast<unsigned int>(std::numeric_limits<int>::max() - health_)) {
+    health_ = std::numeric_limits<int>::max();
+  }
+  else {
+    health_ += amount;
+  }
   --energy_;
-  std::cout << "ClapTrap " << name_ << " repairs " << amount << " points of health!\n";
+  std::cout
+    << "ClapTrap " << name_ << " restores " << amount
+    << (amount == 1 ? " point" : " points") << " of health!\n";
 }
