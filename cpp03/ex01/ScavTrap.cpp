@@ -1,6 +1,15 @@
 #include "ScavTrap.hpp"
 #include <iostream>
 
+
+ScavTrap::ScavTrap()
+    : ClapTrap() {
+  health_ = 100;
+  energy_ = 50;
+  damage_ = 20;
+  std::cout << "ScavTrap " << name_ << " is constructed.\n";
+}
+
 ScavTrap::ScavTrap(const std::string& name)
     : ClapTrap(name) {
   health_ = 100;

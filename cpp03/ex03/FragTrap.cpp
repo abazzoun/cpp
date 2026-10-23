@@ -1,6 +1,14 @@
 #include "FragTrap.hpp"
 #include <iostream>
 
+FragTrap::FragTrap()
+    : ClapTrap() {
+  health_ = 100;
+  energy_ = 100;
+  damage_ = 30;
+  std::cout << "FragTrap " << name_ << " is constructed.\n";
+}
+
 FragTrap::FragTrap(const std::string& name)
     : ClapTrap(name) {
   health_ = 100;
@@ -26,6 +34,6 @@ FragTrap::~FragTrap() {
   std::cout << "FragTrap " << name_ << " is destroyed.\n";
 }
 
-void FragTrap::highFiveGuys() {
+void FragTrap::highFivesGuys() {
   std::cout << "Give me five!\n";
 }

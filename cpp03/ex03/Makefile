@@ -1,9 +1,9 @@
 NAME			:= ex03
 CXX				:= c++ 
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
-SRC       := main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRC       := main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJ       := $(SRC:.cpp=.o)
-HEADER    := ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+HEADER    := ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 
 
 all: $(NAME)

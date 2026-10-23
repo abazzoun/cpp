@@ -25,3 +25,4 @@ OpenAI Codex was used exlusively for debugging and checking the code for errors.
 ## Resources
 
 - [Inheritance](https://www.learncpp.com/#Chapter24)
+- [Virtual Functions](https://learncpp.com/#Chapter25)

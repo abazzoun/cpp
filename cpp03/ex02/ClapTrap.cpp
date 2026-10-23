@@ -2,6 +2,11 @@
 #include <limits>
 #include <iostream>
 
+ClapTrap::ClapTrap()
+    : name_("Unknown"), health_(10), energy_(10), damage_(0) {
+  std::cout << "ClapTrap " << name_ << " is created.\n";
+}
+
 ClapTrap::ClapTrap(const std::string& name)
     : name_(name), health_(10), energy_(10), damage_(0) {
   std::cout << "ClapTrap " << name_ << " is created.\n";
@@ -50,7 +55,12 @@ void ClapTrap::takeDamage(unsigned int amount) {
     std::cout << "ClapTrap " << name_ << " is dead.\n";
     return ;
   }
-  health_ -= amount;
+  if (amount >= static_cast<unsigned int>(health_)) {
+    health_ = 0;
+  }
+  else {
+    health_ -= amount;
+  }
   std::cout
     << "ClapTrap " << name_ << " takes " << amount
     << (amount == 1 ? " point" : " points") << " of damage!\n";
