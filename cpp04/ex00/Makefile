@@ -1,9 +1,9 @@
 NAME			:= ex00
 CXX				:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
-SRC				:= main.cpp 
+SRC				:= main.cpp Animal.cpp Cat.cpp Dog.cpp
 OBJ				:= $(SRC:.cpp=.o)
-HEADER		:= 
+HEADER		:= Animal.hpp Cat.hpp Dog.hpp
 
 
 all: $(NAME)

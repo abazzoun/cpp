@@ -1,11 +1,13 @@
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat() : type_("Cat") {
+Cat::Cat() {
+  type_ = "Cat";
   std::cout << "Cat is created.\n";
 }
 
-Cat::Cat(const Cat& other) : type_("Cat") {
+Cat::Cat(const Cat& other) {
+  type_ = other.type_;
   std::cout << "Cat is copied.\n";
 }
 
@@ -14,12 +16,13 @@ Cat& Cat::operator=(const Cat& other) {
     type_ = other.type_;
     std::cout << "Cat is equally assigned.\n";
   }
+  return *this;
 }
     
 Cat::~Cat() {
-  std::cout << "Cat is destructed.\n";
+  std::cout << "Cat is destroyed.\n";
 }
 
-Cat::makeSound() override {
+void Cat::makeSound() const {
   std::cout << "meow\n";
 }

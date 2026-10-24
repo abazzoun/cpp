@@ -14,6 +14,7 @@ Animal& Animal::operator=(const Animal& other) {
     type_ = other.type_;
     std::cout << "Animal is assigned.\n";
   }
+  return *this;
 }
 
 Animal::~Animal() {
@@ -22,6 +23,6 @@ Animal::~Animal() {
 
 std::string Animal::getType() const { return type_; }
 
-virtual void Animal::makeSound() {
+void Animal::makeSound() const {
   std::cout << "...\n";
-}  
+} 
